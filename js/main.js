@@ -22,3 +22,26 @@ $('#title').on('input', function() {
         $otherJobInput.slideUp('fast');
     }
 });
+
+//style the select
+$('select').css('font-family', '"Roboto", sans-serif');
+$('select').css('width', '100%');
+$('select').css('background', '#c1deeb');
+$('select').css('border', '2px solid #c1deeb');
+$('select').css('font-weight', '500');
+$('option').css('font-weight', '500');
+
+//No color options appear in the “Color” menu until the user chooses a T-Shirt theme.
+var $originalOpt = $('#color').children();
+var $nThemeOpt = $('<option value="noneSelTheme">Please select a T-shirt theme</option>');
+$('#color').empty();
+$('#color').append($nThemeOpt);
+$('#design').on('input', function() {
+    if ( $('#design').val() === 'Select Theme' ) {
+        $('#color').empty();
+        $('#color').append($nThemeOpt);
+    } else {
+        $('#color').empty();
+        $('#color').append($originalOpt);
+    }
+});
