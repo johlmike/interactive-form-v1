@@ -1,7 +1,13 @@
+//I dont know Main Conference's meaning even if I use google translation.
+//I am afraid it will influence me at the "Activity Registration" section, so I write down this comment.
 
-//Target the name input after page loaded
+
 $(document).ready(function() {
+    //Target the name input after page loaded
     $('#name').focus();
+    //Hide Color Option by default
+    $('#color').hide();
+    $('label[for="color"]').hide();
 });
 
 //Append text input into fieldset
@@ -9,6 +15,7 @@ var $otherJobLabel = $('<label for="other_job">What\'s your job role?</label>');
 var $otherJobInput = $('<input type="text" id="other_job" name="user_title_other">');
 $('form fieldset').first().append($otherJobLabel);
 $('form fieldset').first().append($otherJobInput);
+//Hide otherJob text input by default
 $otherJobLabel.hide();
 $otherJobInput.hide();
 
@@ -23,25 +30,48 @@ $('#title').on('input', function() {
     }
 });
 
-//style the select
-$('select').css('font-family', '"Roboto", sans-serif');
-$('select').css('width', '100%');
-$('select').css('background', '#c1deeb');
-$('select').css('border', '2px solid #c1deeb');
-$('select').css('font-weight', '500');
-$('option').css('font-weight', '500');
-
-//No color options appear in the “Color” menu until the user chooses a T-Shirt theme.
-var $originalOpt = $('#color').children();
-var $nThemeOpt = $('<option value="noneSelTheme">Please select a T-shirt theme</option>');
-$('#color').empty();
-$('#color').append($nThemeOpt);
+//Hide the "Color:" label and drop down menu until a T-Shirt design is selected.
 $('#design').on('input', function() {
     if ( $('#design').val() === 'Select Theme' ) {
-        $('#color').empty();
-        $('#color').append($nThemeOpt);
+        $('#color').fadeOut();
+        $('label[for="color"]').fadeOut();
     } else {
-        $('#color').empty();
-        $('#color').append($originalOpt);
+        $('#color').fadeIn();
+        $('label[for="color"]').fadeIn();
+        //Refresh the color option if user isn't choose the "Select Theme"
+        refreshColor();
     }
 });
+
+//T-shirt color options are revealed based on the design selected.
+var $colorOpt = $('#color').children('option');
+function refreshColor () {
+    $('#color').empty();
+    if ( $('#design').val() === 'js puns' ){
+        $colorOpt.each(function() {
+            if( $(this).text().indexOf('JS Puns') >= 0 ){
+                $('#color').append($(this));
+            }
+        });
+    } else {
+        $colorOpt.each(function() {
+            if( $(this).text().indexOf('I ♥ JS') >= 0 ){
+                $('#color').append($(this));
+            }
+        });
+    }
+}
+
+//User cannot select two activities that are at the same time
+$('input[type="checkbox"]').change(checkCBox);
+function checkCBox () {
+    var labelText = $(this).parent().text();
+    //Main Conference wont influence other checkbox
+    if( labelText.indexOf('Main Conference') <  0 ){
+        if( $(this).prop('checked', 'true') ){
+            //被選取
+        } else {
+            //被取消選取
+        }
+    }
+}
