@@ -1,3 +1,4 @@
+"use strict";
 //Student Name: Ya-Chen Lin
 //I dont know Main Conference's meaning even if I use google translation.
 //I am afraid it will influence me at the "Activity Registration" section, so I write down this comment.
