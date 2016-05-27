@@ -1,7 +1,9 @@
-"use strict";
 //Student Name: Ya-Chen Lin
 //I dont know Main Conference's meaning even if I use google translation.
 //I am afraid it will influence me at the "Activity Registration" section, so I write down this comment.
+
+/* jshint -W097 */
+"use strict";
 
 //Target the name input after page loaded
 $('#name').focus();
@@ -81,6 +83,7 @@ $('input[type="checkbox"]').change(checkCBox);
 //User cannot select two activities that are at the same time
 //Run if the checkBox been change
 function checkCBox() {
+    /*jshint validthis:true */
     var $changedCBox = $(this);
     var $cBoxLabel   = $changedCBox.parent();
     var labelText    = $cBoxLabel.text();
@@ -178,6 +181,7 @@ function checkEmail() {
     }
 }
 function inputFocus () {
+    /*jshint validthis:true */
     $(this).css('border','2px solid #5e97b0');
 }
 
