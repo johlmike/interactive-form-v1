@@ -2,6 +2,9 @@
 //I dont know Main Conference's meaning even if I use google translation.
 //I am afraid it will influence me at the "Activity Registration" section, so I write down this comment.
 
+/* jshint devel:true*/
+/* jshint browser:true*/
+/* globals tamingselect*/
 /* jshint -W097 */
 "use strict";
 
@@ -24,8 +27,8 @@ var $totalCost = $('<p>Total Cost: $0</p>');
 $('.activities').append($totalCost);
 
 //Append text input into fieldset
-var $otherJobLabel = $('<label for="other_job">What\'s your job role?</label>');
-var $otherJobInput = $('<input type="text" id="other_job" name="user_title_other">');
+var $otherJobLabel = $('label[for="other_job"]');
+var $otherJobInput = $('#other_job');
 $('form fieldset').first().append($otherJobLabel);
 $('form fieldset').first().append($otherJobInput);
 
@@ -33,6 +36,7 @@ $('form fieldset').first().append($otherJobInput);
 $otherJobLabel.hide();
 $otherJobInput.hide();
 
+//Style the Select
 //Show input when "Your Job Role" is "Other"
 $('#title').on('input', function() {
     if ($(this).val() === 'other') {

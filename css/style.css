@@ -114,15 +114,20 @@ button:hover {
 }
 
 select {
-    font-family: "Roboto", sans-serif;
-    width: 100%;
+    border: 1px solid #111;
     background: #c1deeb;
-    border: 2px solid #c1deeb;
-    font-weight: 500;
+    padding: 5px 35px 5px 5px;
+    color: #184f68;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    height: 34px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(../images/arrow-down.png) 95% no-repeat #eee;
+    background-size: 20px;
 }
-option{
-    font-weight: 500;
-}
+
 
 /* =================================
   Page Styles
